@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Napominalka</string>
+    <string name="settings">Settings</string>
+    <string name="create">Create</string>
+    <string name="schedule">Schedule</string>
+    <string name="name_of_event">Name of event</string>
+    <string name="new_event">New event</string>
+</resources>
