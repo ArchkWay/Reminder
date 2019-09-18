@@ -85,6 +85,7 @@
             android:id="@+id/btnCreate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:elevation="20dp"
             android:text="@string/create"
             android:layout_marginBottom="20dp"
             android:layout_marginEnd="10dp"

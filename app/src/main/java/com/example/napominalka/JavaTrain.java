@@ -1,38 +1,26 @@
 package com.example.napominalka;
 
+
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.SeekBar;
-import android.widget.TextView;
+import androidx.lifecycle.Observer;
+import com.example.napominalka.db.Event;
+
+import java.util.List;
 
 public class JavaTrain extends AppCompatActivity {
-    SeekBar seekBar;
-    SeekBar seekBar2;
-    SeekBar seekBar3;
-
+    EventViewModel eventViewModel;
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        seekBar = findViewById(R.id.sbHours);
-        seekBar2 = findViewById(R.id.sbHours);
-        seekBar3 = findViewById(R.id.sbHours);
-    }
-    private void sss(SeekBar seekBar, final TextView textView){
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
+        super.onCreate(savedInstanceState, persistentState);
+        eventViewModel = ViewModelProviders.of(this).get(EventViewModel.class);
+        eventViewModel.getAllEvents().observe(this, new Observer<List<Event>>() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                textView.setText("ss progress");
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
+            public void onChanged(@Nullable List<Event> events) {
+                //update RecyclerView
             }
         });
     }
